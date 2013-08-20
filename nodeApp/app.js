@@ -1,14 +1,15 @@
 var app = require('express').createServer()
 var io = require('socket.io').listen(app);
-var filepath = 'C:\Users\Kat\dev\KatChat\web';
+//var filepath = 'C:\Users\Kat\dev\KatChat\web';
+var filepath = '/home/kat/KatChat/web/index.html';
 var path = require('path');
 //path.normalize(filepath);
 app.listen(8080);
 
 // routing
 app.get('/', function (req, res) {
- // res.sendfile(__dirname + '/index.html');
-	res.sendfile(path.basename(filepath), {root: path.dirname(filepath)}); 
+	//res.sendfile(__dirname + '/index.html');
+	res.sendfile(path.resolve(filepath)); 
 });
 
 // usernames which are currently connected to the chat
